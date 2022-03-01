@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/roman/IdeaProjects/AddressBookApplication</OriginalElement>
+  <nodes>
+    <node x="0.0" y="549.0">address.data.addressBook</node>
+    <node x="277.0" y="516.0">address.MenuTest</node>
+    <node x="667.0" y="505.0">address.Menu</node>
+    <node x="549.0" y="810.0">address.AddressBookApplication</node>
+    <node x="132.7430555555556" y="0.0">address.data.addressEntry</node>
+    <node x="481.0" y="505.0">address.data.addressEntryTest</node>
+    <node x="905.0" y="0.0">address.data.addressBookTest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="address.AddressBookApplication" target="address.data.addressEntry" relationship="CREATE">
+      <point x="0.0" y="-38.5" />
+      <point x="656.5" y="484.0" />
+      <point x="486.61805555555554" y="484.0" />
+      <point x="486.61805555555554" y="474.0" />
+      <point x="434.9930555555556" y="474.0" />
+      <point x="100.75" y="226.5" />
+    </edge>
+    <edge source="address.data.addressBook" target="address.data.addressEntry" relationship="TO_MANY">
+      <point x="-64.25" y="-82.5" />
+      <point x="64.25" y="474.0" />
+      <point x="233.4930555555556" y="474.0" />
+      <point x="-100.75" y="226.5" />
+    </edge>
+    <edge source="address.MenuTest" target="address.data.addressEntry" relationship="CREATE">
+      <point x="0.0" y="-115.5" />
+      <point x="369.0" y="484.0" />
+      <point x="486.61805555555554" y="484.0" />
+      <point x="486.61805555555554" y="474.0" />
+      <point x="434.9930555555556" y="474.0" />
+      <point x="100.75" y="226.5" />
+    </edge>
+    <edge source="address.data.addressBook" target="address.data.addressEntry" relationship="CREATE">
+      <point x="64.25" y="-82.5" />
+      <point x="192.75" y="484.0" />
+      <point x="486.6180555555556" y="484.0" />
+      <point x="486.61805555555554" y="474.0" />
+      <point x="434.9930555555556" y="474.0" />
+      <point x="100.75" y="226.5" />
+    </edge>
+    <edge source="address.data.addressEntryTest" target="address.data.addressEntry" relationship="CREATE">
+      <point x="0.0" y="-126.5" />
+      <point x="563.5" y="484.0" />
+      <point x="486.61805555555554" y="484.0" />
+      <point x="486.61805555555554" y="474.0" />
+      <point x="434.9930555555556" y="474.0" />
+      <point x="100.75" y="226.5" />
+    </edge>
+    <edge source="address.AddressBookApplication" target="address.data.addressBook" relationship="CREATE">
+      <point x="0.0" y="-38.5" />
+      <point x="656.5" y="784.0" />
+      <point x="128.5" y="784.0" />
+      <point x="0.0" y="82.5" />
+    </edge>
+    <edge source="address.AddressBookApplication" target="address.Menu" relationship="CREATE">
+      <point x="0.0" y="-38.5" />
+      <point x="656.5" y="784.0" />
+      <point x="763.5" y="784.0" />
+      <point x="0.0" y="126.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7816979051819184" showDependencies="true" x="535.0" y="443.5" />
+  <SelectedNodes>
+    <node>address.data.addressEntry</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

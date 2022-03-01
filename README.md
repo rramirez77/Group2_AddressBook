@@ -1,1 +1,2 @@
-# Group2_AddressBook
+# Ramirez_AddressBook
+Repository for Address Book Application
