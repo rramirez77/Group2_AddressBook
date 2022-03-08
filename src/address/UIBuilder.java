@@ -47,7 +47,6 @@ public class UIBuilder {
 
         //INIT INFO
         AddressBookApplication ab = new AddressBookApplication();
-        AddressBook addressBook = new AddressBook();
         ab.init("test");
 
         //BUTTON FUNCTIONS
@@ -207,7 +206,7 @@ public class UIBuilder {
                         street.getText(), city.getText(), state.getText(), Integer.parseInt(zipcode.getText()),
                         phone.getText(), email.getText());
 
-                addressBook.add(newEntry);
+                ab.ab.add(newEntry);
             }
         });
     }
