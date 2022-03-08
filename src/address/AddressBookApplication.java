@@ -80,13 +80,10 @@ public class AddressBookApplication extends JPanel {
 
     /* DEPRECATED
     public static void initAddressBookExercise(AddressBook ab){
-
         AddressEntry entryOne = new AddressEntry();
         AddressEntry entryTwo = new AddressEntry();
-
         ab.add(entryOne);
         ab.add(entryTwo);
-
         ab.list();
     }*/
 
