@@ -1,6 +1,7 @@
 package address;
 
 import address.data.AddressEntry;
+import address.data.AddressBook;
 
 import javax.swing.*;
 import java.awt.*;
@@ -46,6 +47,7 @@ public class UIBuilder {
 
         //INIT INFO
         AddressBookApplication ab = new AddressBookApplication();
+        AddressBook addressBook = new AddressBook();
         ab.init("test");
 
         //BUTTON FUNCTIONS
@@ -178,7 +180,34 @@ public class UIBuilder {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //much complicate :/
+                JTextField firstName = new JTextField();
+                JTextField lastName = new JTextField();
+                JTextField street = new JTextField();
+                JTextField city = new JTextField();
+                JTextField state = new JTextField();
+                JTextField zipcode = new JTextField();
+                JTextField phone = new JTextField();
+                JTextField email = new JTextField();
+
+                Object[] fields = {
+                        "First Name", firstName,
+                        "Last Name", lastName,
+                        "Street", street,
+                        "City" , city,
+                        "State", state,
+                        "Zipcode", zipcode,
+                        "Phone" , phone,
+                        "Email", email
+
+                };
+                JOptionPane.showConfirmDialog(null, fields, "New Entry", JOptionPane.OK_CANCEL_OPTION);
+
+
+                AddressEntry newEntry = new AddressEntry(firstName.getText(), lastName.getText(),
+                        street.getText(), city.getText(), state.getText(), Integer.parseInt(zipcode.getText()),
+                        phone.getText(), email.getText());
+
+                addressBook.add(newEntry);
             }
         });
     }
