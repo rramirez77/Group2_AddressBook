@@ -18,12 +18,13 @@ public class AddressBookApplication {
      * Main method
      * @param args String inputs
      */
+    
+    // Create instance of address book
+    static addressBook ab = new addressBook();
+    
     public static void main(String[] args) {
         // Create user input
         Scanner myObj = new Scanner(System.in);
-
-        // Create instance of address book
-        addressBook ab = new addressBook();
 
         // Create instance of menu
         Menu myMenu = new Menu();
