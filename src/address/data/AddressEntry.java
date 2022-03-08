@@ -53,10 +53,10 @@ public class AddressEntry {
     @Override
     public String toString() {
         return first + " " + last + '\n' +
-               street + "\n" +
-               city + ", " + state + " " + zip + '\n' +
-               phone + '\n' +
-               email + '\n';
+                street + "\n" +
+                city + ", " + state + " " + zip + '\n' +
+                phone + '\n' +
+                email + '\n';
     }
 
     /**
