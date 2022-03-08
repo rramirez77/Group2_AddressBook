@@ -1,6 +1,7 @@
 package address;
 
-import address.data.AddressEntry;
+import address.data.addressBook;
+import address.data.addressEntry;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.SortedMap;
 
 public class UIBuilder {
@@ -45,17 +47,18 @@ public class UIBuilder {
 
         //INIT INFO
         AddressBookApplication ab = new AddressBookApplication();
-        ab.init("test");
+        addressBook.readFromFile("AddressInputDataFile.txt", ab.ab);
+        //ab.in("test");
 
         //BUILD INFO INTO DISPLAY
         textHolder.setBackground(Color.darkGray);
         Color basic = new Color(200,255,255);
         Color hover = new Color(150,255,255);
         Color click = new Color(100,200,255);
-        SortedMap<String, AddressEntry> data = ab.ab.getData();
+
+        ArrayList<addressEntry> data = ab.ab.getData();
         activePanel ap = new activePanel();
-        for(String s: data.keySet()){
-            AddressEntry a = data.get(s);
+        for(addressEntry a: data){
             JPanel myDisplay = new JPanel(new BorderLayout());
             //int h = scrollPane.getHeight()/5;
             int h = 87;
@@ -75,7 +78,7 @@ public class UIBuilder {
                     ap.getPanel().setBackground(basic);
                     myDisplay.setBackground(click);
                     ap.setPanel(myDisplay);
-                    ap.setKey(s);
+                    ap.setKey(a);
                 }
 
                 @Override
@@ -110,7 +113,7 @@ public class UIBuilder {
                     ap.getPanel().setBackground(basic);
                     myDisplay.setBackground(click);
                     ap.setPanel(myDisplay);
-                    ap.setKey(s);
+                    ap.setKey(a);
                 }
 
                 @Override

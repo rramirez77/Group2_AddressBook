@@ -1,10 +1,12 @@
 package address;
 
+import address.data.addressEntry;
+
 import javax.swing.*;
 
 public class activePanel {
     public JPanel myPanel = new JPanel();
-    String key = "";
+    addressEntry ae;
     public activePanel(){};
 
     public void setPanel(JPanel set){
@@ -13,10 +15,10 @@ public class activePanel {
     public JPanel getPanel(){
         return myPanel;
     }
-    public void setKey(String s){
-        key = s;
+    public void setKey(addressEntry s){
+        ae = s;
     }
-    public String getKey(){
-        return key;
+    public addressEntry getKey(){
+        return ae;
     }
 }
