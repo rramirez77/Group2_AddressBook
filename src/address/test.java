@@ -46,7 +46,7 @@ public class test {
         if(!ae.getEmail().equals("email")){
             return false;
         }
-        System.out.println(ae.toString());
+        System.out.println(ae);
         return true;
     }
     public static boolean checkAddressEntry2(){
@@ -76,14 +76,11 @@ public class test {
         if(!ae.getEmail().equals("alice@bobley.com")){
             return false;
         }
-        if(!ae.toString().equals("alice\nbobley\n123 st\nc city\nCA\n10000\n123456789\nalice@bobley.com\n")){
-            return false;
-        }
-        return true;
+        return ae.toString().equals("alice\nbobley\n123 st\nc city\nCA\n10000\n123456789\nalice@bobley.com\n");
     }
     public static boolean checkMenu() throws IOException {
         Menu menu = new Menu();
-        menu.displayMenu();
+        Menu.displayMenu();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println(menu.prompt_FirstName(br));
         System.out.println(menu.prompt_LastName(br));
