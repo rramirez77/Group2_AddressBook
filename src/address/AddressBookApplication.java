@@ -13,8 +13,9 @@ public class AddressBookApplication extends JPanel {
     /**
      * Contains address book information.
      */
-    public static AddressBook ab = new AddressBook();;
-    public static void main(String args[]) throws IOException {
+    public static AddressBook ab = new AddressBook();
+
+    public static void main(String[] args) throws IOException {
 
         //init
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -71,7 +72,7 @@ public class AddressBookApplication extends JPanel {
                     break;
             }
 
-            myMenu.displayMenu();
+            Menu.displayMenu();
         }
 
 

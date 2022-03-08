@@ -34,7 +34,8 @@ public class AddressEntry {
      */
     private String email;
 
-    public AddressEntry(){};
+    public AddressEntry(){}
+
     public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email){
         first = firstName;
         last = lastName;
