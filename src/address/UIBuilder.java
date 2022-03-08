@@ -32,6 +32,7 @@ public class UIBuilder {
         JScrollPane scrollPane = new JScrollPane(textHolder);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        textHolder.setBackground(Color.darkGray);
 
         //ADD AND SETUP TO FRAME
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -51,32 +52,34 @@ public class UIBuilder {
         //BUTTON FUNCTIONS
         activePanel ap = new activePanel();
         dispButton.addActionListener(new ActionListener() {
-            boolean lineGenerated = false;
             @Override
             public void actionPerformed(ActionEvent e) {
+                //REMOVE EVERYTHING SO WE DON'T RE-DISPLAY
+                //BASICALLY A FULL REFRESH
+                for(Component x: textHolder.getComponents()){
+                    textHolder.remove(x);
+                }
+                Color basic = new Color(200, 255, 255);
+                Color hover = new Color(150, 255, 255);
+                Color click = new Color(100, 200, 255);
+
                 //BUILD INFO INTO DISPLAY
-                if (!lineGenerated) {
-                    textHolder.setBackground(Color.darkGray);
-                    Color basic = new Color(200, 255, 255);
-                    Color hover = new Color(150, 255, 255);
-                    Color click = new Color(100, 200, 255);
-                    SortedMap<String, AddressEntry> data = ab.ab.getData();
-                    for (String s : data.keySet()) {
-                        AddressEntry a = data.get(s);
-                        JPanel myDisplay = new JPanel(new BorderLayout());
-                        //int h = scrollPane.getHeight()/5;
-                        int h = 87;
-                        myDisplay.setPreferredSize(new Dimension(frame.getWidth(), h));
-                        myDisplay.setMaximumSize(new Dimension(Integer.MAX_VALUE, h));
-                        JTextArea addressData = new JTextArea(a.toString());
-                        myDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
-                        myDisplay.add(addressData, BorderLayout.WEST);
+                SortedMap<String, AddressEntry> data = ab.ab.getData();
+                for (String s : data.keySet()) {
+                    AddressEntry a = data.get(s);
+                    JPanel myDisplay = new JPanel(new BorderLayout());
+                    //int h = scrollPane.getHeight()/5;
+                    int h = 87;
+                    myDisplay.setPreferredSize(new Dimension(frame.getWidth(), h));
+                    myDisplay.setMaximumSize(new Dimension(Integer.MAX_VALUE, h));
+                    JTextArea addressData = new JTextArea(a.toString());
+                    myDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
+                    myDisplay.add(addressData, BorderLayout.WEST);
 
-                        addressData.setEditable(false);
-
-                        addressData.setOpaque(false);
-                        myDisplay.setBackground(basic);
-                        myDisplay.addMouseListener(new MouseListener() {
+                    addressData.setEditable(false);
+                    addressData.setOpaque(false);
+                    myDisplay.setBackground(basic);
+                    myDisplay.addMouseListener(new MouseListener() {
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 ap.getPanel().setBackground(basic);
@@ -111,7 +114,7 @@ public class UIBuilder {
                             }
                         });
 
-                        addressData.addMouseListener(new MouseListener() {
+                    addressData.addMouseListener(new MouseListener() {
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 ap.getPanel().setBackground(basic);
@@ -146,16 +149,14 @@ public class UIBuilder {
                             }
                         });
 
-                        textHolder.add(myDisplay);
-
-                    }
-                    lineGenerated = true;
+                    textHolder.add(myDisplay);
                 }
                 frame.pack();
             }
         });
 
         remButton.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 ab.ab.remove2(ap.getKey());
@@ -196,6 +197,104 @@ public class UIBuilder {
                         phone.getText(), email.getText());
 
                 ab.ab.add(newEntry);
+
+                // AND THEN UPDATE DISPLAY
+                for(Component x: textHolder.getComponents()){
+                    textHolder.remove(x);
+                }
+                Color basic = new Color(200, 255, 255);
+                Color hover = new Color(150, 255, 255);
+                Color click = new Color(100, 200, 255);
+
+                //BUILD INFO INTO DISPLAY
+                SortedMap<String, AddressEntry> data = ab.ab.getData();
+                for (String s : data.keySet()) {
+                    AddressEntry a = data.get(s);
+                    JPanel myDisplay = new JPanel(new BorderLayout());
+                    //int h = scrollPane.getHeight()/5;
+                    int h = 87;
+                    myDisplay.setPreferredSize(new Dimension(frame.getWidth(), h));
+                    myDisplay.setMaximumSize(new Dimension(Integer.MAX_VALUE, h));
+                    JTextArea addressData = new JTextArea(a.toString());
+                    myDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
+                    myDisplay.add(addressData, BorderLayout.WEST);
+
+                    addressData.setEditable(false);
+                    addressData.setOpaque(false);
+                    myDisplay.setBackground(basic);
+                    myDisplay.addMouseListener(new MouseListener() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            ap.getPanel().setBackground(basic);
+                            myDisplay.setBackground(click);
+                            ap.setPanel(myDisplay);
+                            ap.setKey(s);
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                            if (myDisplay.getBackground() != (click)) {
+                                myDisplay.setBackground(hover);
+                            }
+
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                            if (myDisplay.getBackground() != (click)) {
+                                myDisplay.setBackground(basic);
+                            }
+                        }
+                    });
+
+                    addressData.addMouseListener(new MouseListener() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            ap.getPanel().setBackground(basic);
+                            myDisplay.setBackground(click);
+                            ap.setPanel(myDisplay);
+                            ap.setKey(s);
+                        }
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+
+                        }
+
+                        @Override
+                        public void mouseEntered(MouseEvent e) {
+                            if (myDisplay.getBackground() != (click)) {
+                                myDisplay.setBackground(hover);
+                            }
+
+                        }
+
+                        @Override
+                        public void mouseExited(MouseEvent e) {
+                            if (myDisplay.getBackground() != (click)) {
+                                myDisplay.setBackground(basic);
+                            }
+                        }
+                    });
+
+                    textHolder.add(myDisplay);
+                }
+                frame.pack();
             }
         });
     }
