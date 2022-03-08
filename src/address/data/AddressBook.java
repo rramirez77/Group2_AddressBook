@@ -86,6 +86,10 @@ public class AddressBook {
 
     }
 
+    public void remove2(String s) {
+        addressEntries.remove(s);
+    }
+
     /**
      * @param s
      * find and print all entries with last name starting with s.

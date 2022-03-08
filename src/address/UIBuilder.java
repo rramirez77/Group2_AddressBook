@@ -1,7 +1,6 @@
 package address;
 
 import address.data.AddressEntry;
-import address.data.AddressBook;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +49,7 @@ public class UIBuilder {
         ab.init("test");
 
         //BUTTON FUNCTIONS
-
+        activePanel ap = new activePanel();
         dispButton.addActionListener(new ActionListener() {
             boolean lineGenerated = false;
             @Override
@@ -62,7 +61,6 @@ public class UIBuilder {
                     Color hover = new Color(150, 255, 255);
                     Color click = new Color(100, 200, 255);
                     SortedMap<String, AddressEntry> data = ab.ab.getData();
-                    activePanel ap = new activePanel();
                     for (String s : data.keySet()) {
                         AddressEntry a = data.get(s);
                         JPanel myDisplay = new JPanel(new BorderLayout());
@@ -158,21 +156,13 @@ public class UIBuilder {
         });
 
         remButton.addActionListener(new ActionListener() {
-            /*
-            ******
-            * ADD remove2 TO AddressBook CLASS.
-            * THIS IS TO AVOID THE STUFF WHERE YOU SEARCH BY CONSOLE.
-            public void remove2(String s){
-                addressEntries.remove(s);
-            }
-            *
-            */
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*ab.ab.remove2(ap.getKey());
+                ab.ab.remove2(ap.getKey());
                 textHolder.remove(ap.getPanel());
                 textHolder.revalidate();
-                textHolder.repaint();*/
+                textHolder.repaint();
             }
         });
 
