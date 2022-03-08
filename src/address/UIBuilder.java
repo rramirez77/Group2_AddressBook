@@ -156,7 +156,6 @@ public class UIBuilder {
         });
 
         remButton.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 ab.ab.remove2(ap.getKey());
