@@ -26,7 +26,7 @@ public class Menu {
     public String prompt_FirstName(BufferedReader b) throws IOException {
         System.out.print("First Name: ");
         return b.readLine();
-    };
+    }
 
     /**
      * prompts user for last name
@@ -48,7 +48,7 @@ public class Menu {
     public String prompt_Street(BufferedReader b) throws IOException {
         System.out.print("Street: ");
         return b.readLine();
-    };
+    }
 
     /**
      * prompts user for city
@@ -59,7 +59,7 @@ public class Menu {
     public String prompt_City(BufferedReader b) throws IOException {
         System.out.print("City: ");
         return b.readLine();
-    };
+    }
 
     /**
      * prompts user for state
@@ -70,7 +70,7 @@ public class Menu {
     public String prompt_State(BufferedReader b) throws IOException {
         System.out.print("State: ");
         return b.readLine();
-    };
+    }
 
     /**
      * prompts user for zip
@@ -94,7 +94,7 @@ public class Menu {
             }
         }
         return Integer.parseInt(s);
-    };
+    }
 
     /**
      * prompts user for phone
@@ -116,5 +116,5 @@ public class Menu {
     public String prompt_Email(BufferedReader b) throws IOException {
         System.out.print("Email: ");
         return b.readLine();
-    };
+    }
 }

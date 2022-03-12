@@ -14,7 +14,7 @@ public class AddressBook {
     // Could be further reduced via complex array-based entry storage and repeat checks.
     // Does introduce potential searching errors when people go beyond an individual's last name.
 
-    private SortedMap<String, AddressEntry> addressEntries = new TreeMap<String, AddressEntry>();
+    private final SortedMap<String, AddressEntry> addressEntries = new TreeMap<String, AddressEntry>();
 
     public SortedMap<String, AddressEntry> getData(){
         return addressEntries;
@@ -51,8 +51,6 @@ public class AddressBook {
         addressEntries.put(entry.getLast().toLowerCase() + entry.getFirst() + entry.getPhone(), entry);
     }
 
-
-
     /**
      * @param s
      * @throws IOException
@@ -87,6 +85,11 @@ public class AddressBook {
         }
 
     }
+
+    public void remove2(String s) {
+        addressEntries.remove(s);
+    }
+
 
     /**
      * @param s
