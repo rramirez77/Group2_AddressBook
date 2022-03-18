@@ -1,50 +1,29 @@
 package address.data;
 
 public class AddressEntry {
-    /**
-     * Entry's first name
-     */
-    private String first;
-    /**
-     * Entry's last name
-     */
-    private String last;
-    /**
-     * Entry's street
-     */
-    private String street;
-    /**
-     * Entry's city
-     */
-    private String city;
-    /**
-     * Entry's state
-     */
-    private String state;
-    /**
-     * Entry's zip code
-     */
-    private int zip;
-    /**
-     * Entry's phone
-     */
-    private String phone;
-    /**
-     * Entry's email
-     */
+
+    private Address address;
+    private Name name;
     private String email;
+    private String phone;
+    private int id;
 
     public AddressEntry(){}
 
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email){
-        first = firstName;
-        last = lastName;
-        this.street = street;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
+    public AddressEntry(Name n, Address a, String phone, String email, int id){
+        this.address = a;
+        this.name = n;
         this.phone = phone;
         this.email = email;
+        this.id = id;
+    }
+
+    public AddressEntry(String first, String last, String street, String city, String state, int zip, String email, String phone, int id){
+        this.name = new Name(first, last);
+        this.address = new Address(street, city, state, zip);
+        this.phone = phone;
+        this.email = email;
+        this.id = id;
     }
 
     /**
@@ -53,64 +32,63 @@ public class AddressEntry {
      */
     @Override
     public String toString() {
-        return first + " " + last + '\n' +
-                street + "\n" +
-                city + ", " + state + " " + zip + '\n' +
-                phone + '\n' +
-                email + '\n';
+        return name.toString() + "\n" +
+                address.toString() + "\n" +
+                phone + "\n" +
+                email + "\n";
     }
 
     /**
      * returns first name
-     * @return
+     * @return String
      */
     public String getFirst() {
-        return first;
+        return name.getFirstName();
     }
 
     /**
      * returns last name
-     * @return
+     * @return String
      */
     public String getLast() {
-        return last;
+        return name.getLastName();
     }
 
     /**
      * returns street
-     * @return
+     * @return String
      */
     public String getStreet() {
-        return street;
+        return address.getStreet();
     }
 
     /**
      * returns city
-     * @return
+     * @return String
      */
     public String getCity() {
-        return city;
+        return address.getCity();
     }
 
     /**
      * returns state
-     * @return
+     * @return String
      */
     public String getState() {
-        return state;
+        return address.getState();
     }
 
     /**
      * returns zip
-     * @return
+     * @return int
      */
     public int getZip() {
-        return zip;
+        return address.getZipcode();
     }
 
     /**
      * returns phone
-     * @return
+     * @return String
      */
     public String getPhone() {
         return phone;
@@ -129,7 +107,7 @@ public class AddressEntry {
      * @param first
      */
     public void setFirst(String first) {
-        this.first = first;
+        name.setFirstName(first);
     }
 
     /**
@@ -137,7 +115,7 @@ public class AddressEntry {
      * @param last
      */
     public void setLast(String last) {
-        this.last = last;
+        name.setLastName(last);
     }
 
     /**
@@ -145,7 +123,7 @@ public class AddressEntry {
      * @param street
      */
     public void setStreet(String street) {
-        this.street = street;
+        address.setStreet(street);
     }
 
     /**
@@ -153,7 +131,7 @@ public class AddressEntry {
      * @param city
      */
     public void setCity(String city) {
-        this.city = city;
+        address.setCity(city);
     }
 
     /**
@@ -161,7 +139,7 @@ public class AddressEntry {
      * @param state
      */
     public void setState(String state) {
-        this.state = state;
+        address.setState(state);
     }
 
     /**
@@ -169,7 +147,7 @@ public class AddressEntry {
      * @param zip
      */
     public void setZip(int zip) {
-        this.zip = zip;
+        address.setZipcode(zip);
     }
 
     /**
@@ -186,5 +164,12 @@ public class AddressEntry {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setName(Name n){
+        this.name = n;
+    }
+    public void setAddress(Address a){
+        this.address = a;
     }
 }
