@@ -6,24 +6,33 @@ public class AddressEntry {
     private Name name;
     private String email;
     private String phone;
-    private int id;
+    private String id;
 
     public AddressEntry(){}
 
-    public AddressEntry(Name n, Address a, String phone, String email, int id){
+    public AddressEntry(Name n, Address a, String phone, String email, String id){
         this.address = a;
         this.name = n;
         this.phone = phone;
         this.email = email;
-        this.id = id;
+        if(id.equals("")){
+            this.id = n.getLastName() + phone + n.getFirstName();
+        }else{
+            this.id = id;
+        }
+
     }
 
-    public AddressEntry(String first, String last, String street, String city, String state, int zip, String email, String phone, int id){
+    public AddressEntry(String first, String last, String street, String city, String state, int zip, String email, String phone, String id){
         this.name = new Name(first, last);
         this.address = new Address(street, city, state, zip);
         this.phone = phone;
         this.email = email;
-        this.id = id;
+        if(id.equals("")){
+            this.id = last + phone + first;
+        }else{
+            this.id = id;
+        }
     }
 
     /**
