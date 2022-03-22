@@ -2,6 +2,7 @@ package address;
 
 import address.data.AddressBook;
 import address.data.AddressEntry;
+import address.ui.activePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,26 +12,53 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 
+import java.sql.*;
+
 public class AddressBookApplication extends JPanel {
     /**
      * Contains address book information.
      */
-    public static AddressBook ab = new AddressBook();
-    static activePanel ap = new activePanel();
+    private static AddressBook ab = new AddressBook();
+    /**
+     * ActivePanel helper object.
+     */
+    private static activePanel ap = new activePanel();
 
     //COLOR SCHEME HERE
+    /**
+     * AddressBook entry normal color
+     */
     static Color basic = new Color(200, 255, 255);
+
+    /**
+     * AddressBook entry color on mouse hover
+     */
     static Color hover = new Color(150, 255, 255);
+
+    /**
+     * AddressBook entry color on select
+     */
     static Color click = new Color(100, 200, 255);
+
+    /**
+     * Find panel entry normal color
+     */
     static Color findBasic = new Color(200,255,200);
+
+    /**
+     * Find panel color on mouse hover
+     */
     static Color findHover = new Color(150,255,150);
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, SQLException, ClassNotFoundException{
 
         //FRAME INIT
         JFrame frame = new JFrame();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setSize(new Dimension((int) screenSize.getWidth()/5, (int) screenSize.getHeight()/2));
         frame.getContentPane().setLayout(new BorderLayout());
         frame.setBackground(Color.darkGray);
+        frame.setLocation((int) (screenSize.getWidth()/4), (int) (screenSize.getHeight()/8));
 
         //BUTTONS INIT
         JPanel buttons = new JPanel(new GridLayout(1,3));
@@ -44,6 +72,9 @@ public class AddressBookApplication extends JPanel {
         buttons.add(editButton);
         buttons.add(remButton);
 
+        frame.getContentPane().add(buttons, BorderLayout.SOUTH);
+        buttons.setPreferredSize(new Dimension(frame.getWidth(),frame.getHeight()/10));
+
         //DISPLAY INIT
         JPanel textHolder = new JPanel();
         textHolder.setLayout(new BoxLayout(textHolder, BoxLayout.PAGE_AXIS));
@@ -52,28 +83,50 @@ public class AddressBookApplication extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         textHolder.setBackground(Color.darkGray);
 
-        //ADD AND SETUP TO FRAME
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setSize(new Dimension((int) screenSize.getWidth()/5, (int) screenSize.getHeight()/2));
-        frame.getContentPane().add(buttons, BorderLayout.SOUTH);
         frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
-
-        buttons.setPreferredSize(new Dimension(frame.getWidth(),frame.getHeight()/10));
         scrollPane.setPreferredSize(new Dimension(frame.getWidth(),9*frame.getHeight()/10));
 
-        frame.setLocation((int) (screenSize.getWidth()/4), (int) (screenSize.getHeight()/8));
+        //DATABASE CONNECTION
+        Class.forName ("oracle.jdbc.driver.OracleDriver");
+        Connection conn =
+                DriverManager.getConnection("jdbc:oracle:thin:mcs1015/FSE8ZFGm@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
+        Statement stmt = conn.createStatement ();
+        ResultSet rset = stmt.executeQuery("SELECT * FROM TEST");
+        //TABLE SCHEMA
+        //ID    |NAME    |ADDRESS   |PHONE  |EMAIL
+        //ID (String) - Built from data as "LastnamePhoneFirstname"
+        //NAME (String): "Lastname,Firstname"
+        //ADDRESS (String): "Street,City,State,Zip"
+        //PHONE (String): as is
+        //EMAIL (String): as is
 
-        //MANUAL TEST ENTRIES BECAUSE DATABASE NOT FILLED.
-        AddressEntry ex = new AddressEntry("alice","alastname","","","",123,"","","");
-        AddressEntry ex2 = new AddressEntry("bob","midname","","","",123,"","","");
-        AddressEntry ex3 = new AddressEntry("cat","lastname","","","",123,"","","");
-        ab.add(ex3);
-        ab.add(ex2);
-        ab.add(ex);
+        //READING DATABASE
+        while (rset.next ()) //get next row of table returned
+        {
+
+            String[] name = rset.getString(2).split(",",2);
+            String[] address = rset.getString(3).split(",");
+
+            ab.add(new AddressEntry(name[1],name[0],
+                    address[0],address[1],address[2],Integer.parseInt(address[3]),
+                    rset.getString(4),
+                    rset.getString(5),
+                    ""));
+
+            /*
+            //prints database entries out to console
+            for(int i=1; i<=rset.getMetaData().getColumnCount(); i++) { //visit each column
+
+                System.out.print(rset.getString(i) + "\t | ");
+            }
+            System.out.println();
+            System.out.println("========================================");*/
+        }
 
         //INITIAL UI BUILD
         buildDisplay(textHolder);
         frame.setVisible(true);
+
         //BUTTON FUNCTIONS
 
         findButton.addActionListener(new ActionListener() {
@@ -102,7 +155,7 @@ public class AddressBookApplication extends JPanel {
                     finder.add(findScroller);
                     boolean found = false;
                     for (String s : ab.getData().keySet()) {
-                        if (s.startsWith(name.getText())) {
+                        if (s.toLowerCase().startsWith(name.getText().toLowerCase())) {
                             found = true;
                             AddressEntry a = ab.getData().get(s);
                             JPanel myDisplay = new JPanel(new BorderLayout());
@@ -200,13 +253,22 @@ public class AddressBookApplication extends JPanel {
                         AddressEntry newEntry = new AddressEntry(firstName.getText(), lastName.getText(),
                                 street.getText(), city.getText(), state.getText(), Integer.parseInt(zipcode.getText()),
                                 phone.getText(), email.getText(),lastName.getText() + phone.getText() + firstName.getText());
+
+                        //ADD TO LOCAL BOOK
                         ab.add(newEntry);
-                        //TODO: UPDATE DATABASE
+                        //ADD TO DATABASE
+                        stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('" + newEntry.getId() + "','" +
+                                lastName.getText() + "," + firstName.getText() + "','" +
+                                street.getText() + "," + city.getText() + "," + state.getText() + "," + zipcode.getText() + "','" +
+                                phone.getText() + "','" +
+                                email.getText() + "')");
 
                         // AND THEN UPDATE DISPLAY
                         buildDisplay(textHolder);
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(null,"Error: Non-numeric zipcode!");
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
                     }
                 }
             }
@@ -216,12 +278,12 @@ public class AddressBookApplication extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddressEntry ae = ab.getData().get(ap.getKey());
-                JTextField firstName = new JTextField(ae.getFirst());
-                JTextField lastName = new JTextField(ae.getLast());
-                JTextField street = new JTextField(ae.getStreet());
-                JTextField city = new JTextField(ae.getCity());
-                JTextField state = new JTextField(ae.getState());
-                JTextField zipcode = new JTextField(ae.getZip() + "");
+                JTextField firstName = new JTextField(ae.getName().getFirstName());
+                JTextField lastName = new JTextField(ae.getName().getLastName());
+                JTextField street = new JTextField(ae.getAddress().getStreet());
+                JTextField city = new JTextField(ae.getAddress().getCity());
+                JTextField state = new JTextField(ae.getAddress().getState());
+                JTextField zipcode = new JTextField(ae.getAddress().getZipcode() + "");
                 JTextField phone = new JTextField(ae.getPhone());
                 JTextField email = new JTextField(ae.getEmail());
                 Object[] fields = {
@@ -245,12 +307,26 @@ public class AddressBookApplication extends JPanel {
                         AddressEntry newEntry = new AddressEntry(firstName.getText(), lastName.getText(),
                                 street.getText(), city.getText(), state.getText(), Integer.parseInt(zipcode.getText()),
                                 phone.getText(), email.getText(),lastName.getText() + phone.getText() + firstName.getText());
+
+                        //"EDIT" LOCAL
+                        ab.remove(ap.getKey());
                         ab.add(newEntry);
-                        ab.remove2(ap.getKey());
-                        textHolder.remove(ap.getPanel());
-                        //TODO: UPDATE DATABASE
+
+                        //"EDIT" DATABASE
+                        try {
+                            stmt.executeUpdate("DELETE FROM TEST " + "WHERE ID = '" + ap.getKey() + "'");
+                            stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('" + newEntry.getId() + "','" +
+                                    lastName.getText() + "," + firstName.getText() + "','" +
+                                    street.getText() + "," + city.getText() + "," + state.getText() + "," + zipcode.getText() + "','" +
+                                    phone.getText() + "','" +
+                                    email.getText() + "')");
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
 
                         // AND THEN UPDATE DISPLAY
+                        textHolder.remove(ap.getPanel());
+                        ap.setKey("");
                         buildDisplay(textHolder);
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(null,"Error: Non-numeric zipcode!");
@@ -262,24 +338,34 @@ public class AddressBookApplication extends JPanel {
         remButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ab.remove2(ap.getKey());
+                try {
+                    stmt.executeUpdate("DELETE FROM TEST " + "WHERE Id = '" + ap.getKey() + "'");
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                ab.remove(ap.getKey());
                 textHolder.remove(ap.getPanel());
                 textHolder.revalidate();
                 textHolder.repaint();
             }
         });
 
+        //OPERATIONAL LOOP DO NOT REMOVE
+        //something is causing resize and repainting issues.
+        //not clean, but does fix.
         while(true){
-            //something is causing resize and painting issues.
-            //not clean, but does fix.
             Thread.sleep(200);
             textHolder.repaint();
         }
     }
 
+    /**
+     * clears and rebuilds main display area (param textholder)
+     * @param txt
+     */
     public static void buildDisplay(JPanel txt){
         //CLEARS DISPLAY AREA AND THEN REBUILDS IT
-        //HAS TO BE DONE THIS WAY TO MAINTAIN ORDER
+        //HAS TO BE DONE THIS WAY TO MAINTAIN ALPHABETICAL ORDER
         for(Component x: txt.getComponents()){
             txt.remove(x);
         }
@@ -287,7 +373,7 @@ public class AddressBookApplication extends JPanel {
             AddressEntry a = ab.getData().get(s);
             JPanel myDisplay = new JPanel(new BorderLayout());
             //int h = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight()*9/100;
-            int h = 87;
+            int h = 87; //HARDCODED 87 ALLOWS 5 LINES OF TEXT AT DEFAULT TEXT SIZE.
             myDisplay.setPreferredSize(new Dimension(Integer.MAX_VALUE, h));
             myDisplay.setMaximumSize(myDisplay.getPreferredSize());
             JTextArea addressData = new JTextArea(a.toString());

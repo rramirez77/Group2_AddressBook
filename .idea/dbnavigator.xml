@@ -32,9 +32,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="33c6e3c6-7e3e-471d-989e-bab7f6a9ed47" object-ref="consoles/csuebDb" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="33c6e3c6-7e3e-471d-989e-bab7f6a9ed47" />

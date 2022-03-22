@@ -1,38 +1,91 @@
 package address.data;
 
+import java.sql.SQLException;
+
 public class AddressEntry {
 
+    /**
+     * Address object containing Street, City, State, and Zipcode information
+     */
     private Address address;
+    /**
+     * Name object containing FirstName and LastName information
+     */
     private Name name;
-    private String email;
+    /**
+     * phone number
+     */
     private String phone;
+    /**
+     * email
+     */
+    private String email;
+    /**
+     * id built of form LastnameZipcodeFirstname
+     */
     private String id;
 
+    /**
+     * blank constructor
+     */
     public AddressEntry(){}
 
+    /**
+     * constructor from name and address objects
+     * @param n
+     * @param a
+     * @param phone
+     * @param email
+     * @param id
+     */
     public AddressEntry(Name n, Address a, String phone, String email, String id){
         this.address = a;
         this.name = n;
-        this.phone = phone;
-        this.email = email;
-        if(id.equals("")){
-            this.id = n.getLastName() + phone + n.getFirstName();
-        }else{
-            this.id = id;
+        this.phone = "";
+        this.email = "";
+        try {
+            if(!phone.equals(null)){
+                this.phone = phone;
+            }
+            if(!email.equals(null)){
+                this.email = email;
+            }
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
         }
-
+        if(id.equals("")){this.id = n.getLastName() + this.phone + n.getFirstName();}
+            else{this.id = id;}
     }
 
+    /**
+     * constructor of individual components
+     * @param first
+     * @param last
+     * @param street
+     * @param city
+     * @param state
+     * @param zip
+     * @param email
+     * @param phone
+     * @param id
+     */
     public AddressEntry(String first, String last, String street, String city, String state, int zip, String email, String phone, String id){
         this.name = new Name(first, last);
         this.address = new Address(street, city, state, zip);
-        this.phone = phone;
-        this.email = email;
-        if(id.equals("")){
-            this.id = last + phone + first;
-        }else{
-            this.id = id;
+        this.phone = "";
+        this.email = "";
+        try {
+            if(!phone.equals(null)){
+                this.phone = phone;
+            }
+            if(!email.equals(null)){
+                this.email = email;
+            }
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
         }
+        if(id.equals("")){this.id = last + this.phone + first;}
+            else{this.id = id;}
     }
 
     /**
@@ -48,51 +101,11 @@ public class AddressEntry {
     }
 
     /**
-     * returns first name
+     * returns key equivocal id
      * @return String
      */
-    public String getFirst() {
-        return name.getFirstName();
-    }
-
-    /**
-     * returns last name
-     * @return String
-     */
-    public String getLast() {
-        return name.getLastName();
-    }
-
-    /**
-     * returns street
-     * @return String
-     */
-    public String getStreet() {
-        return address.getStreet();
-    }
-
-    /**
-     * returns city
-     * @return String
-     */
-    public String getCity() {
-        return address.getCity();
-    }
-
-    /**
-     * returns state
-     * @return String
-     */
-    public String getState() {
-        return address.getState();
-    }
-
-    /**
-     * returns zip
-     * @return int
-     */
-    public int getZip() {
-        return address.getZipcode();
+    public String getId(){
+        return id;
     }
 
     /**
@@ -105,58 +118,26 @@ public class AddressEntry {
 
     /**
      * returns email
-     * @return
+     * @return String
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * sets first name
-     * @param first
+     * returns name object
+     * @return Name
      */
-    public void setFirst(String first) {
-        name.setFirstName(first);
+    public Name getName() {
+        return name;
     }
 
     /**
-     * sets last name
-     * @param last
+     * returns address object
+     * @return Address
      */
-    public void setLast(String last) {
-        name.setLastName(last);
-    }
-
-    /**
-     * sets street
-     * @param street
-     */
-    public void setStreet(String street) {
-        address.setStreet(street);
-    }
-
-    /**
-     * sets city
-     * @param city
-     */
-    public void setCity(String city) {
-        address.setCity(city);
-    }
-
-    /**
-     * sets state
-     * @param state
-     */
-    public void setState(String state) {
-        address.setState(state);
-    }
-
-    /**
-     * sets zip
-     * @param zip
-     */
-    public void setZip(int zip) {
-        address.setZipcode(zip);
+    public Address getAddress() {
+        return address;
     }
 
     /**
@@ -175,10 +156,19 @@ public class AddressEntry {
         this.email = email;
     }
 
-    public void setName(Name n){
-        this.name = n;
+    /**
+     * sets name to object given
+     * @param name
+     */
+    public void setName(Name name){
+        this.name = name;
     }
-    public void setAddress(Address a){
-        this.address = a;
+
+    /**
+     * sets address to object given
+     * @param address
+     */
+    public void setAddress(Address address){
+        this.address = address;
     }
 }

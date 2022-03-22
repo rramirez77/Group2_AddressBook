@@ -28,24 +28,40 @@ public class DataBaseConnect {
         // Create a Statement
         Statement stmt = conn.createStatement ();
 
+        //CREATE TABLE
+        /*String query = "CREATE TABLE TEST("
+                + "ID VARCHAR (50), "
+                + "Name VARCHAR (50), "
+                + "Address VARCHAR (50), "
+                + "Phone VARCHAR (20), "
+                + "Email VARCHAR (50))";
+
+        stmt.execute(query);*/
+
+        //DELETE TABLE
+        /*
+        String sql = "DROP TABLE TEST";
+        stmt.execute(sql);*/
+
+        //science
+
+        //stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('Last1111111111First', 'Last,First', '123 Street,City,State,55555', '1111111111', 'name@email')");
+        //stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('Washington000-000-0000George', 'Washington,George', '1 Street,Place,AS,00000', '000-000-0000', 'gwsh@email.com')");
+        //stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('Davies123-456-7890Greg', 'Davies,Greg', 'address here,Ch4,UK,99999', '123-456-7890', 'greg@greg.greg')");
+        //stmt.executeUpdate("DELETE FROM TEST " + "WHERE ID = 'Last1111111111First'");
+
         // Select the all (*) from the table JAVATEST
-        ResultSet rset = stmt.executeQuery("SELECT * FROM DOGS");
+        ResultSet rset = stmt.executeQuery("SELECT * FROM TEST");
 
-        System.out.println(rset);
-
-        // Iterate through the result and print the employee names
-
+        //printing table
         while (rset.next ()) //get next row of table returned
         {
             for(int i=1; i<=rset.getMetaData().getColumnCount(); i++) { //visit each column
 
-                System.out.print(rset.getString(i) + " | ");
-
-                System.out.println(" ");
-
-                System.out.println("========================================");
+                System.out.print(rset.getString(i) + "\t | ");
             }
-
+            System.out.println();
+            System.out.println("========================================");
         }
 
 
