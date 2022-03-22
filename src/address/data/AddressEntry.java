@@ -36,7 +36,7 @@ public class AddressEntry {
     }
 
     /**
-     * converts into string form, split by lines.
+     * converts into string form, split by lines
      * @return
      */
     @Override
