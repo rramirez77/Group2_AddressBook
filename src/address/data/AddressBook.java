@@ -49,7 +49,7 @@ public class AddressBook {
      * add formed entry to book.
      */
     public void add(AddressEntry entry){
-        addressEntries.put(entry.getLast().toLowerCase() + entry.getFirst() + entry.getPhone(), entry);
+        addressEntries.put(entry.getName().getLastName().toLowerCase() + entry.getName().getFirstName() + entry.getPhone(), entry);
     }
 
     /**
@@ -64,7 +64,7 @@ public class AddressBook {
         int counter = 0;
         for(String a: addressEntries.keySet()){
             if(a.startsWith(s)){
-                if(addressEntries.get(a).getLast().toLowerCase().startsWith(s)) { // extra validation as keys contain more than only last name.
+                if(addressEntries.get(a).getName().getLastName().toLowerCase().startsWith(s)) { // extra validation as keys contain more than only last name.
                     found.add(a);
                     System.out.println(++counter + "): ");
                     System.out.println(addressEntries.get(a).toString());
@@ -100,7 +100,7 @@ public class AddressBook {
         s = s.toLowerCase();
         for(String a: addressEntries.keySet()){
             if(a.startsWith(s)){
-                if(addressEntries.get(a).getLast().toLowerCase().startsWith(s)) { // extra validation as keys contain more than only last name.
+                if(addressEntries.get(a).getName().getLastName().toLowerCase().startsWith(s)) { // extra validation as keys contain more than only last name.
                     System.out.println(addressEntries.get(a).toString());
                 }
             }

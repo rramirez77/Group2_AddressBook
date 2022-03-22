@@ -29,8 +29,8 @@ public class Address {
     }
 
     public String toString(){
-        return street + "\n" + city + ", " + state + " " + zipcode;
-    }
+        return street + " " + city + ", " + state + " " + zipcode;
+    }  //removed \n
     public void setStreet(String s){
         street = s;
     }

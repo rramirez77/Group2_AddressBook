@@ -48,52 +48,48 @@ public class AddressEntry {
     }
 
     /**
-     * returns first name
-     * @return String
+     * sets name
+     * @param n
      */
-    public String getFirst() {
-        return name.getFirstName();
+    public void setName(Name n){
+        this.name = n;
     }
 
     /**
-     * returns last name
-     * @return String
+     * sets address
+     * @param a
      */
-    public String getLast() {
-        return name.getLastName();
+    public void setAddress(Address a){
+        this.address = a;
+    }
+    /**
+     * sets phone
+     * @param phone
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
-     * returns street
-     * @return String
+     * sets email
+     * @param email
      */
-    public String getStreet() {
-        return address.getStreet();
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * returns city
-     * @return String
+     * returns name
+     * @return
      */
-    public String getCity() {
-        return address.getCity();
-    }
+    public Name getName(){return this.name;}
 
     /**
-     * returns state
-     * @return String
+     * returns address
+     * @return
      */
-    public String getState() {
-        return address.getState();
-    }
+    public Address getAddress(){return this.address;}
 
-    /**
-     * returns zip
-     * @return int
-     */
-    public int getZip() {
-        return address.getZipcode();
-    }
 
     /**
      * returns phone
@@ -111,74 +107,19 @@ public class AddressEntry {
         return email;
     }
 
-    /**
-     * sets first name
-     * @param first
+    /**\
+     * returns id
+     * @return
      */
-    public void setFirst(String first) {
-        name.setFirstName(first);
-    }
+    public String getID(){return this.id;}
 
-    /**
-     * sets last name
-     * @param last
-     */
-    public void setLast(String last) {
-        name.setLastName(last);
-    }
 
-    /**
-     * sets street
-     * @param street
-     */
-    public void setStreet(String street) {
-        address.setStreet(street);
-    }
 
-    /**
-     * sets city
-     * @param city
-     */
-    public void setCity(String city) {
-        address.setCity(city);
-    }
 
-    /**
-     * sets state
-     * @param state
-     */
-    public void setState(String state) {
-        address.setState(state);
-    }
 
-    /**
-     * sets zip
-     * @param zip
-     */
-    public void setZip(int zip) {
-        address.setZipcode(zip);
-    }
 
-    /**
-     * sets phone
-     * @param phone
-     */
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
-    /**
-     * sets email
-     * @param email
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public void setName(Name n){
-        this.name = n;
-    }
-    public void setAddress(Address a){
-        this.address = a;
-    }
+
+
 }
