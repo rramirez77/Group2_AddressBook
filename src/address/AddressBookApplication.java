@@ -78,7 +78,7 @@ public class AddressBookApplication extends JPanel {
         frame.setLocation((int) (screenSize.getWidth()/4), (int) (screenSize.getHeight()/8));
 
 
-        //READING FROM THE DATABASE
+        //READ FROM DATABASE
         /**ResultSet rset = stmt.executeQuery("SELECT * FROM ADDRESSENTRYTABLE");
 
         System.out.println(rset);
