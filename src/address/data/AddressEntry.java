@@ -69,7 +69,7 @@ public class AddressEntry {
      * @param phone
      * @param id
      */
-    public AddressEntry(String first, String last, String street, String city, String state, int zip, String email, String phone, String id){
+    public AddressEntry(String first, String last, String street, String city, String state, int zip, String phone, String email, String id){
         this.name = new Name(first, last);
         this.address = new Address(street, city, state, zip);
         this.phone = "";

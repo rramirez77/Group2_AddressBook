@@ -23,25 +23,27 @@ public class DataBaseConnect {
         // were given by our CS tech in an email ---THIS WILL BE DIFFERENT
         //jdbc:oracle:thin:@//adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu
         Connection conn =
-                DriverManager.getConnection("jdbc:oracle:thin:mcs1015/FSE8ZFGm@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
+                DriverManager.getConnection("jdbc:oracle:thin:mcs1018/z4Boy2Du@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
 
         // Create a Statement
         Statement stmt = conn.createStatement ();
 
+        //DELETE TABLE
+
+        String sql = "DROP TABLE ADDRESSENTRYTABLE";
+        stmt.execute(sql);
+
         //CREATE TABLE
-        /*String query = "CREATE TABLE TEST("
+        String query = "CREATE TABLE ADDRESSENTRYTABLE("
                 + "ID VARCHAR (50), "
                 + "Name VARCHAR (50), "
                 + "Address VARCHAR (50), "
                 + "Phone VARCHAR (20), "
                 + "Email VARCHAR (50))";
 
-        stmt.execute(query);*/
+        stmt.execute(query);
 
-        //DELETE TABLE
-        /*
-        String sql = "DROP TABLE TEST";
-        stmt.execute(sql);*/
+
 
         //science
 
@@ -51,7 +53,7 @@ public class DataBaseConnect {
         //stmt.executeUpdate("DELETE FROM TEST " + "WHERE ID = 'Last1111111111First'");
 
         // Select the all (*) from the table JAVATEST
-        ResultSet rset = stmt.executeQuery("SELECT * FROM TEST");
+        ResultSet rset = stmt.executeQuery("SELECT * FROM ADDRESSENTRYTABLE");
 
         //printing table
         while (rset.next ()) //get next row of table returned

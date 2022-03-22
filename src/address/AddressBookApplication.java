@@ -89,9 +89,9 @@ public class AddressBookApplication extends JPanel {
         //DATABASE CONNECTION
         Class.forName ("oracle.jdbc.driver.OracleDriver");
         Connection conn =
-                DriverManager.getConnection("jdbc:oracle:thin:mcs1015/FSE8ZFGm@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
+                DriverManager.getConnection("jdbc:oracle:thin:mcs1018/z4Boy2Du@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
         Statement stmt = conn.createStatement ();
-        ResultSet rset = stmt.executeQuery("SELECT * FROM TEST");
+        ResultSet rset = stmt.executeQuery("SELECT * FROM ADDRESSENTRYTABLE");
         //TABLE SCHEMA
         //ID    |NAME    |ADDRESS   |PHONE  |EMAIL
         //ID (String) - Built from data as "LastnamePhoneFirstname"
@@ -257,7 +257,7 @@ public class AddressBookApplication extends JPanel {
                         //ADD TO LOCAL BOOK
                         ab.add(newEntry);
                         //ADD TO DATABASE
-                        stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('" + newEntry.getId() + "','" +
+                        stmt.executeUpdate("INSERT INTO ADDRESSENTRYTABLE " + "VALUES ('" + newEntry.getId() + "','" +
                                 lastName.getText() + "," + firstName.getText() + "','" +
                                 street.getText() + "," + city.getText() + "," + state.getText() + "," + zipcode.getText() + "','" +
                                 phone.getText() + "','" +
@@ -308,14 +308,15 @@ public class AddressBookApplication extends JPanel {
                                 street.getText(), city.getText(), state.getText(), Integer.parseInt(zipcode.getText()),
                                 phone.getText(), email.getText(),lastName.getText() + phone.getText() + firstName.getText());
 
+
                         //"EDIT" LOCAL
                         ab.remove(ap.getKey());
                         ab.add(newEntry);
 
                         //"EDIT" DATABASE
                         try {
-                            stmt.executeUpdate("DELETE FROM TEST " + "WHERE ID = '" + ap.getKey() + "'");
-                            stmt.executeUpdate("INSERT INTO TEST " + "VALUES ('" + newEntry.getId() + "','" +
+                            stmt.executeUpdate("DELETE FROM ADDRESSENTRYTABLE " + "WHERE ID = '" + ap.getKey() + "'");
+                            stmt.executeUpdate("INSERT INTO ADDRESSENTRYTABLE " + "VALUES ('" + newEntry.getId() + "','" +
                                     lastName.getText() + "," + firstName.getText() + "','" +
                                     street.getText() + "," + city.getText() + "," + state.getText() + "," + zipcode.getText() + "','" +
                                     phone.getText() + "','" +
@@ -339,7 +340,7 @@ public class AddressBookApplication extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    stmt.executeUpdate("DELETE FROM TEST " + "WHERE Id = '" + ap.getKey() + "'");
+                    stmt.executeUpdate("DELETE FROM ADDRESSENTRYTABLE " + "WHERE Id = '" + ap.getKey() + "'");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
