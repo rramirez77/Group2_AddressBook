@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class DataBaseConnect {
     /**
-     * @param args
+     * @param args args
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException{
 

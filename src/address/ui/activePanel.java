@@ -1,13 +1,12 @@
-/**
- * activePanel class creates panel
- * @author: Andrew Zhou
- * @author: Karla Villa Estrella
- * @author: Romano Edwin Ramirez
- * @author: Esad Hasanovic
- */
 package address.ui;
 import javax.swing.*;
-
+/**
+ * activePanel class creates panel
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
+ */
 public class activePanel {
     /**
      * marker for tracked panel
@@ -25,7 +24,7 @@ public class activePanel {
 
     /**
      * sets panel
-     * @param set
+     * @param set set
      */
     public void setPanel(JPanel set){
         myPanel = set;
@@ -33,7 +32,7 @@ public class activePanel {
 
     /**
      * gets panel
-     * @return JPanel
+     * @return myPanel
      */
     public JPanel getPanel(){
         return myPanel;
@@ -41,7 +40,7 @@ public class activePanel {
 
     /**
      * sets key
-     * @param s
+     * @param s s
      */
     public void setKey(String s){
         key = s;
@@ -49,7 +48,7 @@ public class activePanel {
 
     /**
      * gets key
-     * @return
+     * @return key
      */
     public String getKey(){
         return key;

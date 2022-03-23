@@ -1,11 +1,12 @@
+package address.data;
 /**
  * AddressEntry is a class that creates a new address entry
- * @author: Andrew Zhou
- * @author: Karla Villa Estrella
- * @author: Romano Edwin Ramirez
- * @author: Esad Hasanovic
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
  */
-package address.data;
+
 public class AddressEntry {
 
     /**

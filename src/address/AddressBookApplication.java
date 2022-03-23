@@ -1,12 +1,6 @@
-/**
- * AddressBookApplication is the GUI class that will present
- * a GUI address book application
- * @author Andrew Zhou
- * @author: Karla Villa Estrella
- * @author: Romano Edwin Ramirez
- * @author: Esad Hasanovic
- */
 package address;
+
+
 
 import address.data.AddressBook;
 import address.data.AddressEntry;
@@ -21,6 +15,14 @@ import java.io.*;
 
 import java.sql.*;
 
+/**
+ * AddressBookApplication is the GUI class that will present
+ * a GUI address book application
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
+ */
 public class AddressBookApplication extends JPanel {
     /**
      * Contains address book information.
@@ -362,7 +364,7 @@ public class AddressBookApplication extends JPanel {
 
     /**
      * clears and rebuilds main display area (param textholder)
-     * @param txt
+     * @param txt txt
      */
     public static void buildDisplay(JPanel txt){
         //CLEARS DISPLAY AREA AND THEN REBUILDS IT

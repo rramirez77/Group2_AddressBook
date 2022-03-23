@@ -1,12 +1,13 @@
-/**
- * Name is a class that creates a name: first and last name
- * @author: Andrew Zhou
- * @author: Karla Villa Estrella
- * @author; Romano Edwin Ramirez
- * @author: Esad Hasanovic
- */
+
 
 package address.data;
+/**
+ * Name is a class that creates a name: first and last name
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
+ */
 public class Name {
 
     /**

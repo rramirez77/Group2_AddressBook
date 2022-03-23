@@ -1,15 +1,14 @@
+package address.data;
+import java.util.*;
 /**
  * AddressBook is a class that creates an
  * address book that holds a local copy of
  * all the address entries
- * @author: Andrew Zhou
- * @author: Karla Villa Estrella
- * @author: Romano Edwin Ramirez
- * @author: Esad Hasanovic
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
  */
-
-package address.data;
-import java.util.*;
 public class AddressBook {
 
     /**
@@ -35,8 +34,8 @@ public class AddressBook {
     public AddressBook(){}
 
     /**
-     * @param entry
      * add formed entry to book
+     * @param entry entry
      */
     public void add(AddressEntry entry){
         addressEntries.put(entry.getId(), entry);
@@ -44,7 +43,7 @@ public class AddressBook {
 
     /**
      * removes entry by key from book.
-     * @param s
+     * @param s s
      */
     public void remove(String s) {
         addressEntries.remove(s);

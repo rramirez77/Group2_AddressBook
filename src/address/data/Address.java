@@ -1,11 +1,12 @@
+
+package address.data;
 /**
  * Address is a class that creates an address
- * @author: Andrew Zhou
- * @author: Karla Villa Estrella
- * @author: Romano Edwin Ramirez
- * @author: Esad Hasanovic
+ * @author Andrew Zhou
+ * @author Karla Villa Estrella
+ * @author Romano Edwin Ramirez
+ * @author Esad Hasanovic
  */
-package address.data;
 public class Address {
 
     /**
