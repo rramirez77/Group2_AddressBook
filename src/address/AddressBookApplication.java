@@ -1,7 +1,4 @@
 package address;
-
-
-
 import address.data.AddressBook;
 import address.data.AddressEntry;
 import address.ui.activePanel;
