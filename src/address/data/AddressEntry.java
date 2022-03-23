@@ -1,7 +1,11 @@
+/**
+ * AddressEntry is a class that creates a new address entry
+ * @author: Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author: Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
 package address.data;
-
-import java.sql.SQLException;
-
 public class AddressEntry {
 
     /**
@@ -32,11 +36,11 @@ public class AddressEntry {
 
     /**
      * constructor from name and address objects
-     * @param n
-     * @param a
-     * @param phone
-     * @param email
-     * @param id
+     * @param n name of person
+     * @param a address
+     * @param phone phone number
+     * @param email email
+     * @param id ID of entry
      */
     public AddressEntry(Name n, Address a, String phone, String email, String id){
         this.address = a;
@@ -59,15 +63,15 @@ public class AddressEntry {
 
     /**
      * constructor of individual components
-     * @param first
-     * @param last
-     * @param street
-     * @param city
-     * @param state
-     * @param zip
-     * @param email
-     * @param phone
-     * @param id
+     * @param first first name
+     * @param last last name
+     * @param street street name
+     * @param city city name
+     * @param state state name
+     * @param zip zipcode
+     * @param email email
+     * @param phone phone number
+     * @param id id
      */
     public AddressEntry(String first, String last, String street, String city, String state, int zip, String phone, String email, String id){
         this.name = new Name(first, last);
@@ -90,7 +94,7 @@ public class AddressEntry {
 
     /**
      * converts into string form, split by lines.
-     * @return
+     * @return String of the name, address, phone and email of an addressEntry
      */
     @Override
     public String toString() {
@@ -102,7 +106,7 @@ public class AddressEntry {
 
     /**
      * returns key equivocal id
-     * @return String
+     * @return id as a string
      */
     public String getId(){
         return id;
@@ -110,7 +114,7 @@ public class AddressEntry {
 
     /**
      * returns phone
-     * @return String
+     * @return phone number as a string
      */
     public String getPhone() {
         return phone;
@@ -118,7 +122,7 @@ public class AddressEntry {
 
     /**
      * returns email
-     * @return String
+     * @return email as a string
      */
     public String getEmail() {
         return email;
@@ -126,7 +130,7 @@ public class AddressEntry {
 
     /**
      * returns name object
-     * @return Name
+     * @return name as a Name object
      */
     public Name getName() {
         return name;
@@ -134,7 +138,7 @@ public class AddressEntry {
 
     /**
      * returns address object
-     * @return Address
+     * @return address and an Address object
      */
     public Address getAddress() {
         return address;
@@ -142,7 +146,7 @@ public class AddressEntry {
 
     /**
      * sets phone
-     * @param phone
+     * @param phone new phone number
      */
     public void setPhone(String phone) {
         this.phone = phone;
@@ -150,7 +154,7 @@ public class AddressEntry {
 
     /**
      * sets email
-     * @param email
+     * @param email new email
      */
     public void setEmail(String email) {
         this.email = email;
@@ -158,7 +162,7 @@ public class AddressEntry {
 
     /**
      * sets name to object given
-     * @param name
+     * @param name new name
      */
     public void setName(Name name){
         this.name = name;
@@ -166,7 +170,7 @@ public class AddressEntry {
 
     /**
      * sets address to object given
-     * @param address
+     * @param address new address
      */
     public void setAddress(Address address){
         this.address = address;

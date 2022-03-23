@@ -1,5 +1,11 @@
+/**
+ * Address is a class that creates an address
+ * @author: Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author: Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
 package address.data;
-
 public class Address {
 
     /**
@@ -21,10 +27,10 @@ public class Address {
 
     /**
      * Build address from values
-     * @param street
-     * @param city
-     * @param state
-     * @param zipcode
+     * @param street new street
+     * @param city new city
+     * @param state new state
+     * @param zipcode new zipcode
      */
     public Address(String street, String city, String state, int zipcode){
          this.street = street;
@@ -35,7 +41,7 @@ public class Address {
 
     /**
      * Get street address
-     * @return street
+     * @return street as a string
      */
     public String getStreet(){
         return street;
@@ -43,7 +49,7 @@ public class Address {
 
     /**
      * Get city name
-     * @return city
+     * @return city as a string
      */
     public String getCity(){
         return city;
@@ -51,7 +57,7 @@ public class Address {
 
     /**
      * Get state name
-     * @return state
+     * @return state as a string
      */
     public String getState(){
         return state;
@@ -59,7 +65,7 @@ public class Address {
 
     /**
      * Gets zipcode
-     * @return zipcode
+     * @return zipcode as an int
      */
     public int getZipcode(){
         return zipcode;
@@ -75,7 +81,7 @@ public class Address {
 
     /**
      * set street
-     * @param s
+     * @param s new street
      */
     public void setStreet(String s){
         street = s;
@@ -83,7 +89,7 @@ public class Address {
 
     /**
      * set city
-     * @param s
+     * @param s new city
      */
     public void setCity(String s){
         city = s;
@@ -91,7 +97,7 @@ public class Address {
 
     /**
      * set state
-     * @param s
+     * @param s new state
      */
     public void setState(String s){
         state = s;
@@ -99,7 +105,7 @@ public class Address {
 
     /**
      * set zipcode
-     * @param i
+     * @param i new zipcode
      */
     public void setZipcode(int i){
         zipcode = i;

@@ -1,9 +1,16 @@
+/**
+ * AddressBookApplication is the GUI class that will present
+ * a GUI address book application
+ * @author Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author: Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
 package address;
 
 import address.data.AddressBook;
 import address.data.AddressEntry;
 import address.ui.activePanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -113,14 +120,7 @@ public class AddressBookApplication extends JPanel {
                     rset.getString(5),
                     ""));
 
-            /*
-            //prints database entries out to console
-            for(int i=1; i<=rset.getMetaData().getColumnCount(); i++) { //visit each column
 
-                System.out.print(rset.getString(i) + "\t | ");
-            }
-            System.out.println();
-            System.out.println("========================================");*/
         }
 
         //INITIAL UI BUILD

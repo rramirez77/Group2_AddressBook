@@ -1,5 +1,12 @@
-package address.data;
+/**
+ * Name is a class that creates a name, first and last name
+ * @author: Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author; Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
 
+package address.data;
 public class Name {
 
     /**
@@ -13,8 +20,8 @@ public class Name {
 
     /**
      * Constructor for name
-     * @param first
-     * @param last
+     * @param first new first name
+     * @param last new last name
      */
     public Name(String first, String last){
         this.first = first;
@@ -23,7 +30,7 @@ public class Name {
 
     /**
      * gets first name
-     * @return first
+     * @return first name as a string
      */
     public String getFirstName(){
         return first;
@@ -31,7 +38,7 @@ public class Name {
 
     /**
      * gets last name
-     * @return last
+     * @return last name as a string
      */
     public String getLastName(){
         return last;
@@ -39,7 +46,7 @@ public class Name {
 
     /**
      * returns string as "firstname lastname"
-     * @return [full name]
+     * @return first and last name as a string
      */
     public String toString(){
         return first + " " + last;
@@ -47,7 +54,7 @@ public class Name {
 
     /**
      * sets first name
-     * @param s
+     * @param s new first name
      */
     public void setFirstName(String s){
         first = s;
@@ -55,7 +62,7 @@ public class Name {
 
     /**
      * sets last name
-     * @param s
+     * @param s new last name
      */
     public void setLastName(String s){
         last = s;

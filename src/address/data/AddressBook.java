@@ -1,10 +1,15 @@
+/**
+ * AddressBook is a class that creates an
+ * address book that holds a local copy of
+ * all the address entries
+ * @author: Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author: Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
+
 package address.data;
-
-import java.io.InputStreamReader;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-
 public class AddressBook {
 
     /**
