@@ -3,79 +3,80 @@
   <ID>JAVA</ID>
   <OriginalElement>C:/Users/roman/IdeaProjects/Group2_AddressBook</OriginalElement>
   <nodes>
-    <node x="229.0" y="1024.0">address.data.addressBook</node>
-    <node x="0.0" y="1024.0">address.MenuTest</node>
-    <node x="935.0" y="0.0">address.Menu</node>
-    <node x="256.5" y="66.5">address.data.Name</node>
-    <node x="92.49999999999997" y="708.0">address.data.AddressBook</node>
-    <node x="531.0" y="1024.0">address.ui.activePanel</node>
-    <node x="113.49999999999999" y="880.0">address.AddressBookApplication</node>
-    <node x="0.0" y="315.0">address.data.AddressEntry</node>
-    <node x="8.5" y="0.0">address.data.Address</node>
-    <node x="487.0" y="0.0">address.data.addressEntry</node>
-    <node x="702.0" y="1024.0">address.data.DataBaseConnect</node>
-    <node x="1173.0" y="0.0">address.data.addressEntryTest</node>
+    <node x="979.0" y="713.0">address.data.addressBook</node>
+    <node x="750.0" y="713.0">address.MenuTest</node>
+    <node x="302.0" y="713.0">address.Menu</node>
+    <node x="390.5769230769231" y="66.5">address.data.Name</node>
+    <node x="0.0" y="713.0">address.data.AddressBook</node>
+    <node x="0.0" y="1029.0">address.ui.activePanel</node>
+    <node x="21.0" y="885.0">address.AddressBookApplication</node>
+    <node x="2.5" y="359.0">address.data.AddressEntryTest</node>
+    <node x="189.50000000000003" y="325.0">address.data.AddressEntry</node>
+    <node x="0.0" y="0.0">address.data.Address</node>
+    <node x="676.5" y="0.0">address.data.addressEntry</node>
+    <node x="171.0" y="1029.0">address.data.DataBaseConnect</node>
+    <node x="540.0" y="713.0">address.data.addressEntryTest</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="address.data.AddressEntry" target="address.data.Name" relationship="CREATE">
+    <edge source="address.data.AddressEntry" target="address.data.Name" relationship="DEPENDENCY">
       <point x="110.5" y="-171.5" />
-      <point x="331.5" y="295.0" />
-      <point x="341.5" y="295.0" />
-      <point x="341.5" y="275.0" />
-      <point x="376.5" y="275.0" />
-      <point x="40.0" y="61.0" />
-    </edge>
-    <edge source="address.data.AddressEntry" target="address.data.Name" relationship="TO_ONE">
-      <point x="-110.5" y="-171.5" />
-      <point x="110.5" y="295.0" />
-      <point x="117.49999999999999" y="295.0" />
-      <point x="117.49999999999999" y="285.0" />
-      <point x="296.5" y="285.0" />
-      <point x="-40.0" y="61.0" />
+      <point x="521.0" y="305.0" />
+      <point x="415.5" y="305.0" />
+      <point x="415.5" y="275.0" />
+      <point x="523.9102564102565" y="275.0" />
+      <point x="53.33333333333337" y="61.0" />
     </edge>
     <edge source="address.AddressBookApplication" target="address.data.AddressBook" relationship="TO_ONE">
       <point x="-53.75" y="-49.5" />
-      <point x="167.25" y="855.0" />
-      <point x="156.74999999999997" y="855.0" />
+      <point x="74.75" y="860.0" />
+      <point x="64.25" y="860.0" />
       <point x="-64.25" y="61.0" />
     </edge>
-    <edge source="address.data.AddressBook" target="address.data.AddressEntry" relationship="DEPENDENCY">
-      <point x="64.25" y="-61.0" />
-      <point x="285.25" y="683.0" />
-      <point x="331.5" y="683.0" />
-      <point x="110.5" y="171.5" />
-    </edge>
-    <edge source="address.data.AddressEntry" target="address.data.Address" relationship="CREATE">
-      <point x="110.5" y="-171.5" />
-      <point x="331.5" y="295.0" />
-      <point x="341.5" y="295.0" />
-      <point x="341.5" y="275.0" />
-      <point x="179.5" y="275.0" />
-      <point x="57.0" y="127.5" />
+    <edge source="address.data.AddressEntry" target="address.data.Name" relationship="TO_ONE">
+      <point x="-110.5" y="-171.5" />
+      <point x="300.0" y="305.0" />
+      <point x="405.5" y="305.0" />
+      <point x="405.5" y="285.0" />
+      <point x="470.5769230769231" y="285.0" />
+      <point x="0.0" y="61.0" />
     </edge>
     <edge source="address.AddressBookApplication" target="address.data.AddressBook" relationship="DEPENDENCY">
       <point x="53.75" y="-49.5" />
-      <point x="274.75" y="855.0" />
-      <point x="285.25" y="855.0" />
+      <point x="182.25" y="860.0" />
+      <point x="192.75" y="860.0" />
       <point x="64.25" y="61.0" />
+    </edge>
+    <edge source="address.data.AddressEntry" target="address.data.Address" relationship="DEPENDENCY">
+      <point x="110.5" y="-171.5" />
+      <point x="521.0" y="305.0" />
+      <point x="415.5" y="305.0" />
+      <point x="415.5" y="275.0" />
+      <point x="190.0" y="275.0" />
+      <point x="76.0" y="127.5" />
+    </edge>
+    <edge source="address.data.AddressEntryTest" target="address.data.Address" relationship="CREATE">
+      <point x="0.0" y="-137.5" />
+      <point x="86.00000000000003" y="295.0" />
+      <point x="38.0" y="295.0" />
+      <point x="-76.0" y="127.5" />
     </edge>
     <edge source="address.data.AddressEntry" target="address.data.Address" relationship="TO_ONE">
       <point x="-110.5" y="-171.5" />
-      <point x="110.5" y="295.0" />
-      <point x="117.49999999999999" y="295.0" />
-      <point x="117.49999999999999" y="285.0" />
-      <point x="65.5" y="285.0" />
-      <point x="-57.0" y="127.5" />
+      <point x="300.0" y="305.0" />
+      <point x="405.5" y="305.0" />
+      <point x="405.5" y="285.0" />
+      <point x="114.00000000000003" y="285.0" />
+      <point x="0.0" y="127.5" />
     </edge>
-    <edge source="address.data.AddressBook" target="address.data.AddressEntry" relationship="TO_MANY">
-      <point x="-64.25" y="-61.0" />
-      <point x="156.74999999999997" y="683.0" />
-      <point x="110.5" y="683.0" />
-      <point x="-110.5" y="171.5" />
+    <edge source="address.data.AddressEntryTest" target="address.data.Name" relationship="CREATE">
+      <point x="0.0" y="-137.5" />
+      <point x="86.00000000000003" y="295.0" />
+      <point x="417.2435897435897" y="295.0" />
+      <point x="-53.33333333333337" y="61.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.5568627450980392" showDependencies="true" x="976.0774647887323" y="627.5" />
+  <settings layout="Hierarchic" zoom="0.6063193851409052" showDependencies="true" x="618.0" y="575.5" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>
