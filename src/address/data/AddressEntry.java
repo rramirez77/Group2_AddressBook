@@ -94,7 +94,7 @@ public class AddressEntry {
 
     /**
      * converts into string form, split by lines.
-     * @return String of the name, address, phone and email of an addressEntry
+     * @return String for name, address, phone and email of an addressEntry
      */
     @Override
     public String toString() {

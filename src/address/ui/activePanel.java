@@ -1,5 +1,5 @@
 /**
- * activePanel class
+ * activePanel class creates panel
  * @author: Andrew Zhou
  * @author: Karla Villa Estrella
  * @author: Romano Edwin Ramirez

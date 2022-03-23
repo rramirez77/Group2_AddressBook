@@ -36,7 +36,7 @@ public class AddressBook {
 
     /**
      * @param entry
-     * add formed entry to book.
+     * add formed entry to book
      */
     public void add(AddressEntry entry){
         addressEntries.put(entry.getId(), entry);

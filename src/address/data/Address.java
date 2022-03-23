@@ -40,7 +40,7 @@ public class Address {
     }
 
     /**
-     * Get street address
+     * Get street name
      * @return street as a string
      */
     public String getStreet(){
