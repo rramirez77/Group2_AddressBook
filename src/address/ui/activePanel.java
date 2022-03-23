@@ -1,5 +1,11 @@
+/**
+ * activePanel class
+ * @author: Andrew Zhou
+ * @author: Karla Villa Estrella
+ * @author: Romano Edwin Ramirez
+ * @author: Esad Hasanovic
+ */
 package address.ui;
-
 import javax.swing.*;
 
 public class activePanel {
